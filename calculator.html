@@ -108,9 +108,23 @@
   }
 
   function calculate(yourBudget, overYears, rate, month) {
-    var totalBudget = yourBudget * overYears * rate;
+var interest_rate;
+    if(overYears == 2){
+      interest_rate = 1.4;
+    }
+    else if (overYears == 3) {
+      interest_rate = 2.4;
+    }
+    else if (overYears == 4) {
+      interest_rate = 3.4;
+    }
+    else {
+      interest_rate = 1;
+    }
+    var totalBudget = yourBudget * rate * interest_rate;
     var costOfCredit = totalBudget - yourBudget;
     var monthlyPayments = Math.round((totalBudget / month) * 100) / 100;
+
     document.getElementById('totalbudget').innerHTML = totalBudget;
     document.getElementById('totalcreditcost').innerHTML = costOfCredit;
     document.getElementById('rateResult').innerHTML = rate;
