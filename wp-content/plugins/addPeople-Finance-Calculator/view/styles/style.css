@@ -1,0 +1,42 @@
+input.chooseBudget::-webkit-slider-thumb {
+-webkit-appearance: none;
+width: 25px;
+height: 25px;
+background: #fff;
+border-radius: 1em;
+border: 1px solid black;
+cursor: grab;
+}
+input.chooseYears::-webkit-slider-thumb {
+-webkit-appearance: none;
+width: 25px;
+height: 25px;
+background: #fff;
+border-radius: 1em;
+border: 1px solid black;
+cursor: grab;
+}
+#financeCalculator input {
+-webkit-backface-visibility: hidden;
+border:none;
+background: #1245a8;
+box-sizing: border-box;
+outline: none;
+-webkit-appearance: none;
+outline-offset: 0;
+border-radius: 1em;
+padding: 2px;
+}
+.financeNumbers {
+color: green;
+font-size: 2em;
+font-weight: bold;
+margin: 0;
+}
+select.chooseRate {
+background: #fff;
+color: #1245a8;
+border: 1px solid #1245a8;
+font-weight: bold;
+border-radius: 26px;
+}
