@@ -15,5 +15,7 @@ jQuery(document).ready(function($){
         $(".timezone").html(response);
       });
       e.preventDefault();
+      e.reset();
   });
+
 });

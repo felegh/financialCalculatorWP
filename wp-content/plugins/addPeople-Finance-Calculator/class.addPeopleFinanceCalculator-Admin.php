@@ -31,6 +31,8 @@ class AddPeopleFinanceCalculatorAdmin {
 
     public static function my_action(){
       global $wpdb;
+      $table_name = $wpdb->prefix . 'financalc';
+      $wpdb->query("TRUNCATE TABLE $table_name");
     $title = $_POST['dataText'];
     $minimumRate = $_POST['minimumRate'];
     $mediumRate = $_POST['mediumRate'];
@@ -38,7 +40,6 @@ class AddPeopleFinanceCalculatorAdmin {
     $year = $_POST['year'];
     $minimumBudget = $_POST['minimumBudget'];
     $maximumBudget = $_POST['maximumBudget'];
-      $table_name = $wpdb->prefix . 'finanCalc';
       $wpdb->insert(
               $table_name,
               array('name' => $title,
@@ -50,7 +51,7 @@ class AddPeopleFinanceCalculatorAdmin {
                     'year' => $year)
       );
       print_r( $wpdb->queries );
-      echo $_POST['dataText'];
+      //echo $_POST['dataText'];
       echo self::shortcodeToDisplay($title);
       wp_die();
     }
@@ -61,7 +62,7 @@ class AddPeopleFinanceCalculatorAdmin {
 
     public static function CalcDisplay(){
       global $wpdb;
-      $table_name = $wpdb->prefix . 'finanCalc';
+      $table_name = $wpdb->prefix . 'financalc';
       $myrows = $wpdb->get_results("SELECT * FROM $table_name");
       $results = json_decode(json_encode($myrows), True);
         foreach ($results as $value) {
