@@ -24,32 +24,33 @@ class AddPeopleFinanceCalculator {
     global $wpdb;
     $table_name = $wpdb->prefix . 'finanCalc';
     $charset_collate = $wpdb->get_charset_collate();
-    $sql = "CREATE TABLE $table_name(
+    if($table_name){
+
+    }
+      else{
+      $sql = "CREATE TABLE $table_name(
       id mediumint(9) NOT NULL AUTO_INCREMENT,
       name varchar(200),
+      minimumRate varchar(10),
+      mediumRate varchar(10),
+      maximumRate varchar(10),
+      minimumBudget varchar(15),
+      maximumBudget varchar(15),
+      year INT,
       PRIMARY KEY  (id)
     ) $charset_collate;";
+
     require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
-	  dbDelta( $sql );
-  }
-
-  function deactivate(){
-
-  }
-
-  function uninstall(){
-
-  }
+    	  dbDelta( $sql );
+        }
 }
-
-  $addFinanCalc = new AddPeopleFinanceCalculator();
+}
+$addFinanCalc = new AddPeopleFinanceCalculator();
 $addFinan = new AddPeopleFinanceCalculatorAdmin();
 register_activation_hook(__FILE__, array( $addFinanCalc, 'activate'));
-//add_action("admin_init", array($addFinanCalc, 'activate'));
+#add_action("admin_init", array($addFinanCalc, 'activate'));
 add_action('admin_menu', array($addFinan, 'menuforFinanCalc'));
 add_action( 'admin_enqueue_scripts', array($addFinan, 'addingAjax') );
 add_action('wp_ajax_my_action', array($addFinan, 'my_action'));
-//add_action('wp_enqueue_scripts', array($addFinan, 'addingAjax'));
-//add_action( 'wp_ajax_nopriv_my_action', array( $addFinan, 'my_action') );
-add_shortcode( 'finan_calc', array($addFinan, 'timezone'));
+add_shortcode( 'finan_calc', array($addFinan, 'CalcDisplay'));
 ?>
