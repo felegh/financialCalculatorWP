@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="<?php echo plugin_dir_path( __FILE__ )?>styles/style.css">
   <title></title>
 </head>
 
@@ -70,80 +71,32 @@
   </div>
   <input type="submit" value="Submit" id="submitChanges">
 </form>
-  <div class="container highlight">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="row">
-          <div class="col-md-6 bg-primary text-light">
-            <h2 class="text-center">What you want</h2>
-            <div class="row">
-              <div class="col-md-6">
-                <label for="yourbudget" id="option1">Your Budget</label>
-              </div>
-              <div class="col-md-6"><input type="number" min="" max="" step="50" name="yourbudget" value="" id="yourBudget" onchange="financeCalculator()">
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <label for="overyears" id="option2">Over how many years?</label>
-              </div>
-              <div class="col-md-6">
-                <input type="number" name="overyears" min="1" max="4" step="1" value="1" id="overYears" onchange="financeCalculator()">
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <p id="option3">Rate:</p>
-              </div>
-              <div class="col-md-6">
-                <select id="rate" onkeyup="financeCalculator()">
-                  <option value="7">7</option>
-                  <option value="10">10</option>
-                  <option value="14">14</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 bg-secondary text-light">
-            <h2 class="text-center">What we can give you</h2>
-            <div class="row">
-              <div class="col-md-6">
-                <p>Total Budget:</p>
-              </div>
-              <div class="col-md-6">
-                <p id="totalbudget">7000</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <p>Cost of Credit:</p>
-              </div>
-              <div class="col-md-6">
-                <p id="totalcreditcost">6000</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <p>Rate:</p>
-              </div>
-              <div class="col-md-6">
-                <p id="rateResult">7</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <p>Monthly Payments:</p>
-              </div>
-              <div class="col-md-6">
-                <p id="monthlyPayments">583.33</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+<div class="financeCalculator" id="financeCalculator">
+    <div class="financeHeading">
+        <h2>Calculate Your Finance!</h2>
     </div>
-  </div>
-
+    <div class="theBudget">
+    <label for="minBudget" style="margin-right: 1em;">How much do you need to borrow?</label><input type="range" name="minBudget" min="100" max="200" class="chooseBudget">
+    <p class="yearsResult">200</p>
+</div>
+<div class="theRate">
+    <label for="chooseRate">What's your credit score like?</label>
+    <select name="chooseRate" class="chooseRate">
+        <option value="1">Poor</option>
+        <option value="2">Okay</option>
+        <option value="3">Great</option>
+    </select>
+</div>
+<div class="theYears">
+    <label for="chooseYears" style="
+    margin-right: 1em">Over how many years would you repay us?</label><input name="chooseYears" type="range" min="1" max="4" class="chooseYears">
+<p id="yearsResult" class="financeNumbers">4</p>
+    </div>
+    <div class="totalRepayments">
+      <h5>Monthly repayments:</h5>
+      <h4>£0.00</h4>
+    </div>
+</div>
   <script>
   // function option1() {
   //   var selectedOption1 = document.getElementById('myOptions1').value;
