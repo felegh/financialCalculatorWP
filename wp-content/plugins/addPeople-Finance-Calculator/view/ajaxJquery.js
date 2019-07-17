@@ -7,8 +7,8 @@ jQuery(document).ready(function($){
             'mediumRate' : document.getElementById('mediumRate').value,
             'maximumRate' : document.getElementById('maximumRate').value,
             'year' : document.getElementById('yearly').value,
-            'minimumBudget' :document.getElementById('minimumBudget').value,
-            'maximumBudget' :document.getElementById('maximumBudget').value,
+            'minimumBudget' :document.getElementById('minBudget').value,
+            'maximumBudget' :document.getElementById('maxBudget').value,
   }
   jQuery.post(ajax_object.ajax_url, data, function(response){
         alert("Reposnse" + response);

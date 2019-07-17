@@ -52,7 +52,7 @@
     </div>
   </div> -->
   <div class="form-group">
-    <label style="width: 43%">Enter the title you would like to appear on the frontend  <input type="text" id="titleText" class="form-control" placeholder="Title"></label>
+    <label style="width: 43%">Enter the title you would like to appear on the frontend  <input type="text" id="titleText" name= "dataText" class="form-control" placeholder="Title"></label>
   </div>
   <div class="form-group">
     <label style="width: 21.5%">What's the Minimum Budget? <input type="number" class="form-control" id="minBudget" name="minimumBudget" placeholder="Minimum Budget" onchange="updateBudget()"></label>

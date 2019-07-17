@@ -21,6 +21,44 @@
     top: 30%;
     transform: translate(-50%, -50%);
 }
+input#overYears {
+    vertical-align: middle;
+    width: 100%;
+    padding:0;
+}
+p#yearsOutput {
+    font-size: 2em;
+    font-weight: 700;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .financeSlider {
+-webkit-appearance: none;
+height: 25px;
+outline: none;
+opacity: 0.7;
+-webkit-transition: .2s;
+transition: opacity .2s;
+  }
+  .financeSlider:hover {
+    opacity:1;
+  }
+  .financeSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: #6c757d;
+  cursor: pointer;
+}
+.financeSlider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #6c757d;
+  cursor: pointer;
+}
   </style>
   <div class="container highlight">
     <div class="row">
@@ -39,8 +77,11 @@
               <div class="col-md-6">
                 <label for="overyears">Over how many years?</label>
               </div>
-              <div class="col-md-6">
-                <input type="number" name="overyears" min="1" max="4" step="1" value="1" id="overYears" onchange="financeCalculator()">
+              <div class="col-md-3">
+                <input type="range" name="overyears" min="1" max="4" step="1" value="1" id="overYears" class="financeSlider" onchange="financeCalculator()">
+              </div>
+              <div class="col-md-3">
+                <p id="yearsOutput">1</p>
               </div>
             </div>
             <div class="row">
@@ -49,10 +90,10 @@
               </div>
               <div class="col-md-6">
                 <select id="rate" onchange="financeCalculator()">
-                  <option value="7">7</option>
-                  <option value="10">10</option>
-                  <option value="14">14</option>
-                  <option value="18">18</option>
+                  <option value="1.2">1.2</option>
+                  <option value="1.4">1.4</option>
+                  <option value="1.6">1.6</option>
+                  <option value="1.8">1.8</option>
                 </select>
               </div>
             </div>
@@ -64,7 +105,7 @@
                 <p>Total Budget:</p>
               </div>
               <div class="col-md-6">
-                <p id="totalbudget">7000</p>
+                <p id="totalbudget">1200</p>
               </div>
             </div>
             <div class="row">
@@ -72,7 +113,7 @@
                 <p>Cost of Credit:</p>
               </div>
               <div class="col-md-6">
-                <p id="totalcreditcost">6000</p>
+                <p id="totalcreditcost">200</p>
               </div>
             </div>
             <div class="row">
@@ -80,7 +121,7 @@
                 <p>Rate:</p>
               </div>
               <div class="col-md-6">
-                <p id="rateResult">7</p>
+                <p id="rateResult">1.2</p>
               </div>
             </div>
             <div class="row">
@@ -88,7 +129,7 @@
                 <p>Monthly Payments:</p>
               </div>
               <div class="col-md-6">
-                <p id="monthlyPayments">583.33</p>
+                <p id="monthlyPayments">100</p>
               </div>
             </div>
           </div>
@@ -106,22 +147,25 @@
     var month = overYears * 12;
     calculate(yourBudget, overYears, rate, month);
   }
-
+overYears.oninput = function() {
+  var output = document.getElementById('yearsOutput');
+  output.innerHTML = overYears.value;
+}
   function calculate(yourBudget, overYears, rate, month) {
 var interest_rate;
     if(overYears == 2){
-      interest_rate = 1.4;
+      interest_rate = 1.1;
     }
     else if (overYears == 3) {
-      interest_rate = 2.4;
+      interest_rate = 1.2;
     }
     else if (overYears == 4) {
-      interest_rate = 3.4;
+      interest_rate = 1.3;
     }
     else {
       interest_rate = 1;
     }
-    var totalBudget = yourBudget * rate * interest_rate;
+    var totalBudget = Math.round(yourBudget * rate * interest_rate);
     var costOfCredit = totalBudget - yourBudget;
     var monthlyPayments = Math.round((totalBudget / month) * 100) / 100;
 

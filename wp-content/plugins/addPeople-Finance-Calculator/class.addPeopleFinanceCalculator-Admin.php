@@ -50,6 +50,7 @@ class AddPeopleFinanceCalculatorAdmin {
                     'year' => $year)
       );
       print_r( $wpdb->queries );
+      echo $_POST['dataText'];
       echo self::shortcodeToDisplay($title);
       wp_die();
     }
