@@ -13,9 +13,9 @@
  */
 defined('ABSPATH') or die('Access Denied');
 define('AddPeopleFinaCalcDir', plugin_dir_path( __FILE__ ));
-require_once(AddPeopleFinaCalcDir . 'class.AddPeopleFinanCalcAjax.php');
+//require_once(AddPeopleFinaCalcDir . 'class.AddPeopleFinanCalcAjax.php');
 require_once(AddPeopleFinaCalcDir . 'class.addPeopleFinanceCalculator-Admin.php');
-require_once(AddPeopleFinaCalcDir . 'class.AddPeopleFinanCalcAjax.php');
+//require_once(AddPeopleFinaCalcDir . 'class.AddPeopleFinanCalcAjax.php');
 
 class AddPeopleFinanceCalculator {
 
@@ -40,7 +40,11 @@ class AddPeopleFinanceCalculator {
     require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
     	  dbDelta( $sql );
       }
+
 }
+  //function custom_css(){
+    //wp_enqueue_style('custom_css', plugins_url('view/styles/style.css', __FILE__));
+  //}
 }
 $addFinanCalc = new AddPeopleFinanceCalculator();
 $addFinan = new AddPeopleFinanceCalculatorAdmin();
@@ -50,4 +54,7 @@ add_action('admin_menu', array($addFinan, 'menuforFinanCalc'));
 add_action( 'admin_enqueue_scripts', array($addFinan, 'addingAjax') );
 add_action('wp_ajax_my_action', array($addFinan, 'my_action'));
 add_shortcode( 'finan_calc', array($addFinan, 'CalcDisplay'));
+add_action('admin_head', array($addFinan, 'custom_css'));
+add_action('wp_head', array($addFinan, 'custom_css'));
+//add_action('admin_print_styles', array($addFinanCalc, 'custom_css' ));
 ?>

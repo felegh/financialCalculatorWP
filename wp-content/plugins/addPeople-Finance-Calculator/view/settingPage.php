@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-  <link rel="stylesheet" href="<?php echo plugin_dir_path( __FILE__ )?>styles/style.css">
   <title></title>
 </head>
 
@@ -16,42 +15,9 @@
       width: 10em;
       padding-left: 3.5em;
     }
-    /* .highlight {
-    position: absolute;
-    left: 50%;
-    top: 30%;
-    transform: translate(-50%, -50%);
-} */
   </style>
 <form action="#" name="submitForm" id="submitForm">
   <h3> Calculator Plugin Form</h3>
-  <!-- <div class="container bg-info text-light">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="row">
-        <div class="col-md-6">
-            Enter the title: <input type="text" placeholder="Title" id="titleText">
-          <div class="row">
-              <div class="col-md-3">
-            <label for="myOptions1">Option 1 <input type="text" id="myOptions1" name="myOptions1" placeholder="Your Budget" onkeyup="option1()"></label>
-            <label for="myOptions2">Option 2 <input type="text" id="myOptions2" name="myOptions2" placeholder="X Years" onkeyup="option2()"></label>
-            <label for="myOptions3">Option 3 <input type="text" id="myOptions3" name="myOptions3" placeholder="Rate" onkeyup="option3()"></label>
-            </div>
-            <div class="col-md-3 offset-md-1">
-              <label for="myOptions1">Option 1 <select name="" id=""></select></label>
-              <label for="myOptions2">Option 2 <select name="" id=""></select></label>
-              <label for="myOptions3">Option 3
-              <select name="" id=""></select></label>
-            </div>
-          </div>
-        </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <input type="submit" value="Submit" id="submitChanges">
-    </div>
-  </div> -->
   <div class="form-group">
     <label style="width: 43%">Enter the title you would like to appear on the frontend  <input type="text" id="titleText" name= "dataText" class="form-control" placeholder="Title"></label>
   </div>
@@ -98,18 +64,7 @@
     </div>
 </div>
   <script>
-  // function option1() {
-  //   var selectedOption1 = document.getElementById('myOptions1').value;
-  //   document.getElementById('option1').innerHTML = selectedOption1;
-  // }
-  // function option2() {
-  //   var selectedOption2 = document.getElementById('myOptions2').value;
-  //   document.getElementById('option2').innerHTML = selectedOption2;
-  // }
-  // function option3() {
-  //   var selectedOption3 = document.getElementById('myOptions3').value;
-  //   document.getElementById('option3').innerHTML = selectedOption3;
-  // }
+
   function updateBudget(){
     var maximumBudget = document.getElementById('maxBudget').value;
     var minimumBudget = document.getElementById('minBudget').value;
